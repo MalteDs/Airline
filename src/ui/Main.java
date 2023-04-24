@@ -13,5 +13,6 @@ public class Main {
         System.out.println(airline.registerBoarding(101325));
         System.out.println(airline.printBoardingOrder());
         System.out.println(airline.exitOrder());
+
     }
 }
