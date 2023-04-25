@@ -33,8 +33,13 @@ public class Airline {
                 int age = Integer.parseInt(data[2]);
                 String seatNumber = data[3];
                 int miles = Integer.parseInt(data[4]);
-                boolean isVip = Boolean.valueOf(data[5]);
-                boolean specialNeeds = Boolean.valueOf(data[6]);
+                boolean isVip;
+
+                if(Integer.parseInt(String.valueOf(data[3].charAt(1)))<=4){
+                    isVip = true;
+                }else isVip = false;
+
+                boolean specialNeeds = Boolean.valueOf(data[5]);
                 Passenger passenger = new Passenger(name, ids[i], age, seatNumber, miles, isVip, specialNeeds);
                 passengers.put(ids[i], passenger);
                 i++;
@@ -55,18 +60,12 @@ public class Airline {
         if (passenger != null) {
             if (passenger.isVip()) {
                 vipBoardingQueue.enqueue(passenger);
-                boardingOrder++;
-                passenger.setBoardingOrder(boardingOrder);
                 return "The passenger " + passenger.getId() + " is registered in the vip boarding queue";
             } else if (passenger.getAge() > 65 || passenger.isSpecialNeeds() || passenger.getMiles() > 1000){
                 specialBoardingQueue.enqueue(passenger);
-                boardingOrder++;
-                passenger.setBoardingOrder(boardingOrder);
                 return "The passenger " + passenger.getId() + " is registered in the special boarding queue";
             } else {
                 boardingQueue.enqueue(passenger);
-                boardingOrder++;
-                passenger.setBoardingOrder(boardingOrder);
                 return "The passenger " + passenger.getId() + " is registered in the boarding queue";
             }
         } else return "The passenger " + id + " is not registered";
@@ -74,16 +73,24 @@ public class Airline {
 
     public String printBoardingOrder(){
         int order = 1;
-        String messageBoardingOrder = "Boarding order: \n";
+        String messageBoardingOrder = "-----------------------------\n"+
+                                    "Boarding order: \n"+
+                                    "------------------------------\n";
         while (!vipBoardingQueue.isEmpty()){
+            boardingOrder++;
+            vipBoardingQueue.peek().setBoardingOrder(boardingOrder);
             messageBoardingOrder += order+". "+vipBoardingQueue.dequeue().getName() + "\n";
             order++;
         }
         while (!specialBoardingQueue.isEmpty()){
+            boardingOrder++;
+            specialBoardingQueue.peek().setBoardingOrder(boardingOrder);
             messageBoardingOrder += order+". "+specialBoardingQueue.dequeue().getName() + "\n";
             order++;
         }
         while (!boardingQueue.isEmpty()){
+            boardingOrder++;
+            boardingQueue.peek().setBoardingOrder(boardingOrder);
             messageBoardingOrder += order+". "+boardingQueue.dequeue().getName() + "\n";
             order++;
         }
@@ -95,12 +102,16 @@ public class Airline {
     //o buscar la comparacion con las kesy en lugar de con i
     //debo validar si boardingOrder != 0;
     public String exitOrder(){
-        String message = "Exit order: \n";
-        for(int i = 0; i < passengers.getSize(); i++){
-            if(passengers.get(ids[i])!=null){
+        int passengerCont = 1;
+        String message = "Exit order: \n" +
+                "------------------------------------------------------------\n"+
+                "Name                    ||    Boarding Order   ||    Seat\n"+
+                "------------------------------------------------------------\n";
+        for(int i = 0; i < passengers.getSize()-1; i++){
+            if(passengers.get(ids[i])!=null && passengers.get(ids[i]).boardingOrder!=0){
                 if(passengers.get(ids[i]).compareTo(passengers.get(ids[i+1]))>0){
-                    System.out.println("Entra 2: "+passengers.get(ids[i]).getName());
-                    message += (i+1)+". "+passengers.get(ids[i]).getName()+"\n";
+                    message += (passengerCont)+". "+passengers.get(ids[i]).getBoardingInformation()+"\n";
+                    passengerCont++;
                 }
             }
         }
