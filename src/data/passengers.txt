@@ -1,6 +1,6 @@
 Juan Perez,1004132,18,A2,10000,true
 Maria Gonzalez,1001323,19,C3,9000,false
-Pedro Ramirez,101325,20,D4,800,true,true
+Pedro Ramirez,101325,20,D5,800,false
 Daniela Rodriguez,1001328,21,E5,7000,false
-Cristobal Sanchez,1004132,22,A2,10000,true
+Cristobal Sanchez,1004139,22,A2,10000,true
 David Chacon,10013455,23,B3,10000,true,false
