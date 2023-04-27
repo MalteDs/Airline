@@ -71,6 +71,15 @@ public class Airline {
         } else return "The passenger " + id + " is not registered";
     }
 
+    public void simulateArrive(){
+        for(int i = 0; i < ids.length; i++){
+            if(passengers.get(ids[i]) != null){
+                registerBoarding(ids[i]);
+            }
+
+        }
+    }
+
     public String printBoardingOrder(){
         int order = 1;
         String messageBoardingOrder = "-----------------------------\n"+
@@ -101,14 +110,16 @@ public class Airline {
     //Cambiar a collections.sort
     //o buscar la comparacion con las kesy en lugar de con i
     //debo validar si boardingOrder != 0;
+    //Hacer el else para el compareTo o buscar otra forma de hacerlo
     public String exitOrder(){
         int passengerCont = 1;
         String message = "Exit order: \n" +
-                "------------------------------------------------------------\n"+
-                "Name                    ||    Boarding Order   ||    Seat\n"+
-                "------------------------------------------------------------\n";
+                "----------------------------------------------------------------------\n"+
+                "Name                              ||    Boarding Order   ||    Seat   \n"+
+                "----------------------------------------------------------------------\n";
         for(int i = 0; i < passengers.getSize()-1; i++){
-            if(passengers.get(ids[i])!=null && passengers.get(ids[i]).boardingOrder!=0){
+            if(passengers.get(ids[i])!=null){
+
                 if(passengers.get(ids[i]).compareTo(passengers.get(ids[i+1]))>0){
                     message += (passengerCont)+". "+passengers.get(ids[i]).getBoardingInformation()+"\n";
                     passengerCont++;

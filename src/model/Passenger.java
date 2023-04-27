@@ -28,7 +28,7 @@ public class Passenger implements Comparable<Passenger>{
     }
 
     public String getBoardingInformation(){
-        return name+"       ||   "+boardingOrder+"          ||          "+seatNumber;
+        return name+"                          "+boardingOrder+"                       "+seatNumber;
     }
 
     public void setName(String name) {
