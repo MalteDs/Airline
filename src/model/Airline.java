@@ -119,6 +119,7 @@ public class Airline {
                 "----------------------------------------------------------------------\n";
         for(int i = 0; i < passengers.getSize()-1; i++){
             if(passengers.get(ids[i])!=null){
+
                 if(passengers.get(ids[i]).compareTo(passengers.get(ids[i+1]))>0){
                     message += (passengerCont)+". "+passengers.get(ids[i]).getBoardingInformation()+"\n";
                     passengerCont++;
