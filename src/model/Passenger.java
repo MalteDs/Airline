@@ -1,6 +1,6 @@
 package model;
 
-public class Passenger {
+public class Passenger implements Comparable<Passenger>{
     String name;
     int id;
     int age;
@@ -25,6 +25,10 @@ public class Passenger {
 
     public String getName() {
         return name;
+    }
+
+    public String getBoardingInformation(){
+        return name+"                          "+boardingOrder+"                       "+seatNumber;
     }
 
     public void setName(String name) {
@@ -108,6 +112,7 @@ public class Passenger {
                 ".";
     }
 
+    @Override
     public int compareTo(Passenger passenger){
         if (getRow()!=passenger.getRow()){
             return Integer.compare(passenger.getRow(), getRow());
