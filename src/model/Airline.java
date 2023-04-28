@@ -13,6 +13,7 @@ public class Airline {
     private final int[] ids = new int[150];
     final static String folder = "data";
     final static String path = "src/data/passengers.txt";
+    final static String planePath = "src/data/plane.txt";
     int boardingOrder = 0;
 
 
@@ -44,6 +45,24 @@ public class Airline {
                 Passenger passenger = new Passenger(name, ids[i], age, seatNumber, miles, isVip, specialNeeds);
                 passengers.put(ids[i], passenger);
                 i++;
+            }
+        }
+    }
+
+    public void loadPlaneData() throws IOException {
+        File file = new File(planePath);
+        if (file.exists()) {
+            FileInputStream fis = new FileInputStream(file);
+            BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                String flightNumber = data[0];
+                String originAirport = data[1];
+                String destinationAirport = data[2];
+                int rows = Integer.parseInt(data[3]);
+                int column = Integer.parseInt(data[4]);
+                Flight plane = new Flight(flightNumber, originAirport, destinationAirport, rows, column);
             }
         }
     }
@@ -124,7 +143,7 @@ public class Airline {
                 "----------------------------------------------------------------------\n"+
                 "Name                              ||    Boarding Order   ||    Seat   \n"+
                 "----------------------------------------------------------------------\n";
-        for(int i = 0; i < passengers.getSize()-1; i++){
+        for(int i = 0; i < passengers.getSize(); i++){
             if(passengers.get(ids[i])!=null){
                 if(passengers.get(ids[i]).compareTo(passengers.get(ids[i+1]))>0){
                     message += (passengerCont)+". "+passengers.get(ids[i]).getBoardingInformation()+"\n";
@@ -133,7 +152,7 @@ public class Airline {
             }
         }
 
-        for(int i = 0; i < passengers.getSize()-1; i++){
+        for(int i = 0; i < passengers.getSize(); i++){
             if(passengers.get(ids[i])!=null){
                 if(passengers.get(ids[i]).compareTo(passengers.get(ids[i+1]))<=0){
                     message += (passengerCont)+". "+passengers.get(ids[i]).getBoardingInformation()+"\n";

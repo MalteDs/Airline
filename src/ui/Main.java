@@ -27,6 +27,7 @@ public class Main {
                 case 1:
                     System.out.println("Entering passengers data... ");
                     airline.loadPassengerData();
+                    airline.loadPlaneData();
                     System.out.println("Passengers data entered successfully!");
                     break;
                 case 2:

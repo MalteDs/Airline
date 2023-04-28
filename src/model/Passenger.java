@@ -114,12 +114,15 @@ public class Passenger implements Comparable<Passenger>{
 
     @Override
     public int compareTo(Passenger passenger){
-        if (getRow()!=passenger.getRow()){
-            return Integer.compare(passenger.getRow(), getRow());
-        } else if (getColumn()!=passenger.getColumn()){
-            return Integer.compare(passenger.getColumn(), getColumn());
-        } else{
-            return Integer.compare(passenger.getBoardingOrder(), getBoardingOrder());
+        if(passenger!=null){
+            if (getRow()!=passenger.getRow()){
+                return Integer.compare(passenger.getRow(), getRow());
+            } else if (getColumn()!=passenger.getColumn()){
+                return Integer.compare(passenger.getColumn(), getColumn());
+            } else{
+                return Integer.compare(passenger.getBoardingOrder(), getBoardingOrder());
+            }
         }
+        return 0;
     }
 }
