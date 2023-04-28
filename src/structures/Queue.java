@@ -55,6 +55,17 @@ public class Queue<T> {
         return size;
     }
 
+    public boolean contains(T value) {
+        Node<T> current = front;
+        while (current != null) {
+            if (current.getValue().equals(value)) {
+                return true;
+            }
+            current = current.getNext();
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

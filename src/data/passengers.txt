@@ -1,6 +1,160 @@
-Juan Perez,1004132,18,A2,10000,true
+Juan Perez,1004132,18,E9,10000,false
 Maria Gonzalez,1001323,19,C3,9000,false
 Pedro Ramirez,101325,20,D5,800,false
 Daniela Rodriguez,1001328,21,E5,7000,false
 Cristobal Sanchez,1004139,22,A2,10000,true
-David Chacon,10013455,23,B3,10000,true,false
+David Chacon,10013455,23,B3,10000,true
+Luisa Hernandez,1265873,27,C5,9500,false
+Pablo Torres,2459871,29,A12,3000,true
+Mariana Diaz,3189745,45,D7,12000,true
+Sergio Rodriguez,4278951,23,F18,8000,false
+Ana Lopez,5346872,32,E3,6500,true
+Jose Chavez,6598742,19,B15,2500,false
+Valeria Torres,7356912,28,H10,7000,false
+Eduardo Garcia,8492763,41,A6,11000,true
+Diana Martinez,9345621,36,G19,9000,true
+Mario Perez,1123456,25,B10,4000,false
+Sofia Flores,1267845,22,H8,5500,true
+Julio Hernandez,1398745,37,C2,10000,true
+Ana Castro,1468792,18,F12,2000,false
+Luis Torres,1578346,30,E19,8500,false
+Camila Ramirez,1656892,31,D13,6500,false
+Ivan Cruz,1789425,26,B14,5000,false
+Andrea Rodriguez,1897284,39,G11,11000,true
+Carolina Garcia,1976245,20,A4,1500,false
+Carlos Fernandez,2038764,33,F15,9000,true
+David Hernandez,2168753,28,C8,7500,false
+Natalia Perez,2223785,40,H20,12000,true
+Juan Ramirez,2387946,21,D6,3000,false
+Rosa Torres,2459874,43,B9,9500,true
+Daniel Chavez,2598364,35,G16,11000,true
+Marisol Lopez,2678923,29,E4,6000,false
+Juan Hernandez,2793461,24,A11,3500,false
+Lucia Medina,2849751,22,H3,4000,true
+Oscar Torres,2968741,38,C18,10000,true
+Ana Garcia,3059821,19,F9,2500,false
+Luisa Flores,3128745,26,E7,5000,false
+Marco Cruz,3275689,31,D20,8000,false
+Alejandra Perez,3387945,27,B20,7000,true
+Juan Torres,3468792,36,G3,9000,true
+Andrea Rodriguez,3549867,30,A17,6000,false
+Daniel Martinez,3698741,44,F14,12000,true
+Paola Diaz,3789425,24,H1,4500,false
+Fernando Martinez,3867251,42,C15,11000,true
+Ana Torres,3923678,29,E12,7500,true
+Jorge Hernandez,4097852,33,A9,8000,false
+Maria Gonzalez,4178956,37,G20,10000,true
+Luis Garcia,4236897,28,B6,5500,false
+Natalia Torres,4398761,19,F16,3000,false
+David Castro,4478952,25,D11,5000,false
+Mariana Perez,4512378,35,H4,9000,true
+Juan Chavez,4678952,21,C9,2500,false
+Sofia Hernandez,4748961,26,E14,6000,true
+Carlos Castro,4897512,44,A10,12000,true
+Andrea Torres,4928765,31,G12,8000,false
+Daniel Hernandez,5087256,23,B19,4000,false
+Ana Cruz,5137896,30,F10,6500,true
+Jose Garcia,5268941,18,D1,2000,false
+Carolina Perez,5378941,34,H16,8500,true
+Alejandro Torres,5428765,32,C14,7000,false
+Mariana Diaz,5598213,39,E17,11000,true
+Luis Hernandez,5647832,20,A13,1500,false
+Ana Ramirez,5789421,27,G7,7500,true
+Felipe Martinez,5837612,46,D10,12000,true
+Andrea Cruz,5978461,22,B4,3500,false
+David Garcia,6089374,28,F7,5500,false
+Juan Torres,6178923,25,E20,5000,false
+Sofia Ramirez,6237845,40,C11,10000,true
+Laura Hernandez,6398215,29,H19,7000,true
+Pablo Cruz,6458792,36,A16,9000,true
+Diana Rodriguez,6598712,23,G14,4000,false
+Carlos Torres,6678941,27,B18,6500,false
+Mariana Diaz,6723154,31,F4,8500,true
+Luis Hernandez,6897213,42,D8,12000,true
+Ana Ramirez,6975821,24,H2,6000,false
+Mario Torres,7031745,33,C19,8000,true
+Carla Martinez,7192854,28,E11,5500,false
+Luisa Martínez,9087243,23,C12,8000,false
+Fernando Castro,5031859,45,13,12000,true
+Ana González,3092581,31,F6,6000,false
+Andrés García,2086180,29,D3,7000,false
+Lucía Torres,8126060,37,H11,11000,false
+Ricardo Rodríguez,7023134,27,B16,9000,false
+Isabel Díaz,4095321,34,A5,10000,false
+Mateo Pérez,3058237,42,G1,8000,true
+Martina Gómez,6025831,26,C17,6000,false
+Gabriel Ramírez,1023765,51,F3,11000,false
+Mariana Flores,7058236,39,E10,12000,true
+Juan Cruz,6037169,24,A8,9000,false
+Andrea Aguilar,2087635,35,H5,10000,false
+Samuel Gutiérrez,5029731,33,D19,11000,false
+Sofía Vega,3065821,28,B11,7000,false
+Daniel Rojas,8026173,29,C4,6000,false
+Carla Jiménez,7036581,37,F1,9000,true
+Santiago Castro,4082635,41,D12,10000,false
+Paula Sánchez,6072913,25,A7,8000,false
+Miguel Torres,3068751,36,G2,7000,false
+Marta González,8096143,46,H13,12000,false
+Sebastián Ríos,7039215,33,D18,9000,false
+Camila Pérez,5038162,29,B1,8000,false
+Tomás Herrera,6072914,28,C6,7000,true
+Valentina Cruz,3082176,31,F2,9000,false
+Javier Montes,2017359,39,E16,10000,false
+Ana Belén Rodríguez,7032564,30,A15,8000,true
+Diego Gómez,9087532,32,G6,7000,false
+María Elena Pérez,6023971,27,H7,6000,false
+Felipe Rojas,4093817,38,D16,11000,false
+Natalia Silva,7092856,23,C10,9000,false
+Rafael García,3027169,40,D14,10000,true
+Paola Vargas,5038126,26,G17,8000,false
+Ana Sofía Reyes,2067543,35,E1,12000,false
+David Rojas,6038715,29,A3,8000,false
+María del Carmen Ortiz,3058372,42,G5,11000,false
+Javier Pérez,9035172,25,H9,7000,false
+Daniela Rodríguez,8037291,24,B5,10000,true
+Luis García,5029163,37,D4,8000,false
+Carolina Sánchez,7039812,31,C1,9000,false
+Andrés Ramírez,2065978,44,F17,11000,false
+Sofía López,5029186,27,G10,6000,false
+Juan Carlos Ortiz,7031295,36,H6,10000,false
+Ana María Pérez,6093827,30,A19,9000,true
+Santiago Hernández,3059234,33,F8,12000,false
+Paula Martínez,8034659,23,B8,8000,false
+Francisco González,6032571,28,C7,7000,false
+Camila Rojas,3081672,26,F13,10000,false
+Carlos Torres,9053167,48,G9,11000,false
+Andrea Soto,8031254,24,H15,8000,true
+Sofía Torres,3021859,31,F11,6000,false
+Mateo Rodríguez,7069124,38,A18,12000,false
+Ana Karen Hernández,3058236,89,B2,7000,false
+Antonio Reyes,8031956,30,C13,8000,false
+Paola González,2089315,34,F5,10000,false
+Diego Ramírez,6058123,33,E6,9000,false
+Ana Sofía García,7018532,26,H14,6000,true
+Felipe González,3092681,35,G8,7000,false
+Daniela Torres,7038291,24,B12,8000,false
+José Pérez,3069125,37,D2,11000,false
+Ana Belén García,8031725,32,E2,9000,true
+Mario Rodríguez,7029186,27,E13,8000,false
+Catalina Rojas,4059821,23,B17,6000,false
+Alberto Gómez,7031856,31,H18,12000,false
+Ana Sofía Pérez,3079126,78,D15,7000,false
+Luisa Sánchez,6091835,29,A1,8000,true
+Ana Torres,8093167,27,B7,9000,false
+Diego González,6098123,33,E8,8000,false
+Carolina Ramírez,3079812,31,F20,7000,false
+Sofía Ramírez,8053271,22,C20,9000,false
+Luisa Torres,3019535,25,G15,10000,false
+David García,6031275,26,A14,7000,false
+Ana Sofía Sánchez,8053721,23,E18,8000,false
+Juan Carlos Rojas,3019352,38,G4,11000,false
+Andrea Torres,6038254,24,B13,6000,true
+José Luis Ortiz,2069261,45,H12,10000,false
+María del Pilar Reyes,8096315,29,C16,9000,true
+Felipe González,7068123,33,F19,8000,false
+Ana Belén Torres,3058172,26,A20,7000,false
+Carlos Ramírez,9038156,35,E15,10000,false
+Sofía Rojas,6052187,28,D17,6000,false
+Mateo Torres,8037152,23,H17,8000,false
+Daniela García,3091281,34,G13,9000,false
+Luisa Soto,7039261,32,D9,11000,true

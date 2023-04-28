@@ -17,19 +17,23 @@ public class Main {
                     "------------------------------------" +
                     "\n"+
                     "1. Load passengers data\n" +
-                    "2. Register boarding\n" +
-                    "3. Print boarding order\n" +
+                    "2. Register arrival at the boarding lounge\n" +
+                    "3. Start passenger entry\n" +
                     "4. Print exit order\n" +
                     "5. Exit\n");
             option = sc.nextInt();
             sc.nextLine();
             switch (option) {
                 case 1:
+                    System.out.println("Entering passengers data... ");
                     airline.loadPassengerData();
+                    airline.loadPlaneData();
+                    System.out.println("Passengers data entered successfully!");
                     break;
                 case 2:
-                    System.out.println("Enter passenger id: ");
+                    System.out.println("Boarding passengers...");
                     airline.simulateArrive();
+                    System.out.println("Passengers boarded successfully!");
                     break;
                 case 3:
                     System.out.println(airline.printBoardingOrder());

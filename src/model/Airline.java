@@ -7,16 +7,19 @@ import java.io.*;
 public class Airline {
 
     private final HashTable<Integer, Passenger> passengers;
-    Queue<Passenger> boardingQueue = new Queue<>();
-    Queue<Passenger> vipBoardingQueue = new Queue<>();
-    Queue<Passenger> specialBoardingQueue = new Queue<>();
-    private final int[] ids = new int[150];
+    Queue<Integer> boardingQueue = new Queue<>();
+    Queue<Integer> vipBoardingQueue = new Queue<>();
+    Queue<Integer> specialBoardingQueue = new Queue<>();
+    Flight flight;
+    private final int[] ids = new int[160];
     final static String folder = "data";
     final static String path = "src/data/passengers.txt";
+    final static String planePath = "src/data/flight.txt";
     int boardingOrder = 0;
 
+
     public Airline() {
-        passengers = new HashTable<>(150);
+        passengers = new HashTable<>(160);
     }
 
     public void loadPassengerData() throws IOException {
@@ -47,6 +50,24 @@ public class Airline {
         }
     }
 
+    public void loadPlaneData() throws IOException {
+        File file = new File(planePath);
+        if (file.exists()) {
+            FileInputStream fis = new FileInputStream(file);
+            BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                String flightNumber = data[0];
+                String originAirport = data[1];
+                String destinationAirport = data[2];
+                int rows = Integer.parseInt(data[3]);
+                int column = Integer.parseInt(data[4]);
+                flight = new Flight(flightNumber, originAirport, destinationAirport, rows, column);
+            }
+        }
+    }
+
     public Passenger searchPassenger(int id) {
         return passengers.get(id);
     }
@@ -55,20 +76,32 @@ public class Airline {
         return passengers.toString();
     }
 
-    public String registerBoarding(int id) {
+    public void registerBoarding(int id) {
         Passenger passenger = searchPassenger(id);
         if (passenger != null) {
-            if (passenger.isVip()) {
-                vipBoardingQueue.enqueue(passenger);
-                return "The passenger " + passenger.getId() + " is registered in the vip boarding queue";
-            } else if (passenger.getAge() > 65 || passenger.isSpecialNeeds() || passenger.getMiles() > 1000){
-                specialBoardingQueue.enqueue(passenger);
-                return "The passenger " + passenger.getId() + " is registered in the special boarding queue";
-            } else {
-                boardingQueue.enqueue(passenger);
-                return "The passenger " + passenger.getId() + " is registered in the boarding queue";
+            if(!isBoarded(passenger)){
+                if (passenger.isVip()) {
+                    boardingOrder++;
+                    passenger.setBoardingOrder(boardingOrder);
+                    vipBoardingQueue.enqueue(passenger.getId());
+                } else if (passenger.getAge() > 65 || passenger.isSpecialNeeds() || passenger.getMiles() > 1000){
+                    boardingOrder++;
+                    passenger.setBoardingOrder(boardingOrder);
+                    specialBoardingQueue.enqueue(passenger.getId());
+                } else {
+                    boardingOrder++;
+                    passenger.setBoardingOrder(boardingOrder);
+                    boardingQueue.enqueue(passenger.getId());
+                }
             }
-        } else return "The passenger " + id + " is not registered";
+        }
+    }
+
+    private boolean isBoarded(Passenger passenger) {
+        if(vipBoardingQueue.contains(passenger.getId()) || specialBoardingQueue.contains(passenger.getId()) || boardingQueue.contains(passenger.getId())){
+            return true;
+        }
+        return false;
     }
 
     public void simulateArrive(){
@@ -86,21 +119,15 @@ public class Airline {
                                     "Boarding order: \n"+
                                     "------------------------------\n";
         while (!vipBoardingQueue.isEmpty()){
-            boardingOrder++;
-            vipBoardingQueue.peek().setBoardingOrder(boardingOrder);
-            messageBoardingOrder += order+". "+vipBoardingQueue.dequeue().getName() + "\n";
+            messageBoardingOrder += order+". "+passengers.get(vipBoardingQueue.dequeue()).getName() + "\n";
             order++;
         }
         while (!specialBoardingQueue.isEmpty()){
-            boardingOrder++;
-            specialBoardingQueue.peek().setBoardingOrder(boardingOrder);
-            messageBoardingOrder += order+". "+specialBoardingQueue.dequeue().getName() + "\n";
+            messageBoardingOrder += order+". "+passengers.get(specialBoardingQueue.dequeue()).getName() + "\n";
             order++;
         }
         while (!boardingQueue.isEmpty()){
-            boardingOrder++;
-            boardingQueue.peek().setBoardingOrder(boardingOrder);
-            messageBoardingOrder += order+". "+boardingQueue.dequeue().getName() + "\n";
+            messageBoardingOrder += order+". "+passengers.get(boardingQueue.dequeue()).getName() + "\n";
             order++;
         }
         return messageBoardingOrder;
@@ -117,10 +144,18 @@ public class Airline {
                 "----------------------------------------------------------------------\n"+
                 "Name                              ||    Boarding Order   ||    Seat   \n"+
                 "----------------------------------------------------------------------\n";
-        for(int i = 0; i < passengers.getSize()-1; i++){
+        for(int i = 1; i <= passengers.getSize()-1; i++){
             if(passengers.get(ids[i])!=null){
+                if(passengers.get(ids[i]).compareTo(passengers.get(ids[i-1]))<=0){
+                    message += (passengerCont)+". "+passengers.get(ids[i]).getBoardingInformation()+"\n";
+                    passengerCont++;
+                }
+            }
+        }
 
-                if(passengers.get(ids[i]).compareTo(passengers.get(ids[i+1]))>0){
+        for(int i = 1; i <= passengers.getSize()-1; i++){
+            if(passengers.get(ids[i])!=null){
+                if(passengers.get(ids[i]).compareTo(passengers.get(ids[i-1]))>=0){
                     message += (passengerCont)+". "+passengers.get(ids[i]).getBoardingInformation()+"\n";
                     passengerCont++;
                 }
