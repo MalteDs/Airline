@@ -3,16 +3,15 @@ package model;
 import structures.*;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Airline {
-
     private final HashTable<Integer, Passenger> passengers;
     Queue<Integer> boardingQueue = new Queue<>();
     Queue<Integer> vipBoardingQueue = new Queue<>();
     Queue<Integer> specialBoardingQueue = new Queue<>();
     Flight flight;
-    private final int[] ids = new int[160];
-    final static String folder = "data";
+    private int[] ids;
     final static String path = "src/data/passengers.txt";
     final static String planePath = "src/data/flight.txt";
     int boardingOrder = 0;
@@ -43,7 +42,7 @@ public class Airline {
                 }else isVip = false;
 
                 boolean specialNeeds = Boolean.valueOf(data[5]);
-                Passenger passenger = new Passenger(name, ids[i], age, seatNumber, miles, isVip, specialNeeds);
+                Passenger passenger = new Passenger(name, ids[i], age, seatNumber, miles, isVip, specialNeeds, flight);
                 passengers.put(ids[i], passenger);
                 i++;
             }
@@ -64,6 +63,7 @@ public class Airline {
                 int rows = Integer.parseInt(data[3]);
                 int column = Integer.parseInt(data[4]);
                 flight = new Flight(flightNumber, originAirport, destinationAirport, rows, column);
+                ids = new int[rows*column];
             }
         }
     }
@@ -132,35 +132,29 @@ public class Airline {
         }
         return messageBoardingOrder;
     }
+    public int corridor(){
+        return flight.getRowsSeat()/2;
+    }
 
-
-    //Cambiar a collections.sort
-    //o buscar la comparacion con las kesy en lugar de con i
-    //debo validar si boardingOrder != 0;
-    //Hacer el else para el compareTo o buscar otra forma de hacerlo
     public String exitOrder(){
-        int passengerCont = 1;
-        String message = "Exit order: \n" +
-                "----------------------------------------------------------------------\n"+
-                "Name                              ||    Boarding Order   ||    Seat   \n"+
-                "----------------------------------------------------------------------\n";
-        for(int i = 1; i <= passengers.getSize()-1; i++){
-            if(passengers.get(ids[i])!=null){
-                if(passengers.get(ids[i]).compareTo(passengers.get(ids[i-1]))<=0){
-                    message += (passengerCont)+". "+passengers.get(ids[i]).getBoardingInformation()+"\n";
-                    passengerCont++;
-                }
-            }
-        }
-
-        for(int i = 1; i <= passengers.getSize()-1; i++){
-            if(passengers.get(ids[i])!=null){
-                if(passengers.get(ids[i]).compareTo(passengers.get(ids[i-1]))>=0){
-                    message += (passengerCont)+". "+passengers.get(ids[i]).getBoardingInformation()+"\n";
-                    passengerCont++;
-                }
-            }
+        String message ="-----------------------\n"+
+                        "Exit order: \n"+
+                        "-----------------------\n"+
+                        "Name                              ||    Boarding Order   ||    Seat   \n"+
+                        "----------------------------------------------------------------------\n";
+        PriorityQueue<Passenger> exitOrder = new PriorityQueue<>();
+        exitOrder = exitOrder(exitOrder);
+        while(!exitOrder.isEmpty()){
+            message += exitOrder.dequeue().getBoardingInformation()+"\n";
         }
         return message;
+    }
+    private PriorityQueue exitOrder(PriorityQueue<Passenger> exitOrder){
+        for(int i = 1; i < ids.length; i++){
+            if(passengers.get(ids[i])!=null){
+                exitOrder.enqueue(passengers.get(ids[i]), passengers.get(ids[i]).compareTo(passengers.get(ids[i-1])));
+            }
+        }
+        return exitOrder;
     }
 }

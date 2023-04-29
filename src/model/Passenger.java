@@ -9,8 +9,9 @@ public class Passenger implements Comparable<Passenger>{
     boolean isVip; //Podemos agregar varias clases en un enum
     boolean specialNeeds;
     int boardingOrder;
+    Flight flight;
 
-    public Passenger(String name, int id, int age, String seatNumber, int miles, boolean isVip, boolean specialNeeds) {
+    public Passenger(String name, int id, int age, String seatNumber, int miles, boolean isVip, boolean specialNeeds, Flight flight){
         this.name = name;
         this.id = id;
         this.age = age;
@@ -19,6 +20,7 @@ public class Passenger implements Comparable<Passenger>{
         this.isVip = isVip;
         this.specialNeeds = specialNeeds;
         this.boardingOrder = 0;
+        this.flight = flight;
     }
 
 
@@ -99,6 +101,35 @@ public class Passenger implements Comparable<Passenger>{
         return seatNumber.charAt(0);
     }
 
+    public int corridorProximity(){
+        int corridor = flight.getColumnsSeat()/2;
+        if(getColumn() == 'A'){
+            return 3;
+        }
+        if(getColumn() == 'B'){
+            return 2;
+        }
+        if(getColumn() == 'C'){
+            return 1;
+        }
+        if(getColumn() == 'D'){
+            return 0;
+        }
+        if(getColumn() == 'E'){
+            return 0;
+        }
+        if(getColumn() == 'F'){
+            return 1;
+        }
+        if(getColumn() == 'G'){
+            return 2;
+        }
+        if(getColumn() == 'H'){
+            return 3;
+        }
+        return 0;
+    }
+
     @Override
     public String toString() {
         return " Passenger: \n" +
@@ -117,8 +148,8 @@ public class Passenger implements Comparable<Passenger>{
         if(passenger!=null){
             if (getRow()!=passenger.getRow()){
                 return Integer.compare(passenger.getRow(), getRow());
-            } else if (getColumn()!=passenger.getColumn()){
-                return Integer.compare(passenger.getColumn(), getColumn());
+            } else if (corridorProximity()!=passenger.corridorProximity()){
+                return Integer.compare(passenger.corridorProximity(), corridorProximity());
             } else{
                 return Integer.compare(passenger.getBoardingOrder(), getBoardingOrder());
             }
