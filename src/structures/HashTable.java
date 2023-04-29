@@ -68,8 +68,15 @@ public class HashTable<K, V> {
         return null;
     }
 
+    public void clear() {
+        for (int i = 0; i < table.length; i++) {
+            table[i] = null;
+        }
+        size = 0;
+    }
 
-    private int hash(K key) {
+
+    public int hash(K key) {
         int hashCode = key.hashCode();
         return Math.abs(hashCode) % table.length;
     }
@@ -91,7 +98,7 @@ public class HashTable<K, V> {
         table = newTable;
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 
