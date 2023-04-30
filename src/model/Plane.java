@@ -9,8 +9,7 @@ public class Plane {
     private int availableSeats;
     private List<Passenger> passengerList;
 
-    public Plane(String flightNumber, String originAirport, String destinationAirport, LocalDateTime departureTime,
-                 LocalDateTime arrivalTime, int availableSeats, List<Passenger> passengerList) {
+    public Plane(String flightNumber, String originAirport, String destinationAirport, LocalDateTime departureTime, LocalDateTime arrivalTime, int availableSeats, List<Passenger> passengerList) {
         this.flightNumber = flightNumber;
         this.originAirport = originAirport;
         this.destinationAirport = destinationAirport;
@@ -109,3 +108,4 @@ public class Plane {
     }
 
 }
+
