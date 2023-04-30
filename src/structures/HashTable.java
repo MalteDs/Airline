@@ -109,10 +109,10 @@ public class HashTable<K, V> {
         for (int i = 0; i < table.length; i++) {
             HashNode<K, V> pointer = table[i];
             if (pointer != null) {
-                message += pointer.getValue() + "\n";
+                message += pointer.getKey()+ ": " + pointer.getValue() + "\n";
                 while (pointer.getNext() != null) {
                     pointer = pointer.getNext();
-                    message += pointer.getKey() + ": " + pointer.getValue() + ", ";
+                    message += pointer.getKey() + ": " + pointer.getValue() + "\n";
                 }
             }
         }
