@@ -98,13 +98,12 @@ public class Plane {
     }
 
     public List<Passenger> getPriorityPassengers() {
-        List<Passenger> priorityPassengers = new ArrayList<>();
+        List<Passeger> priorityPassengers = new Arraylist();
         for (Passenger passenger : passengerList) {
             if (passenger.isPriorityPassenger()) {
                 priorityPassengers.add(passenger);
             }
         }
-        return priorityPassengers;
     }
 
 }
