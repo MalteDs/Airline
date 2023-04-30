@@ -4,7 +4,7 @@ import structures.HashTable;
 import junit.framework.TestCase;
 public class HashTableTest extends TestCase {
     private HashTable<String, Integer> hashTable;
-     private final int CAPACITY = 10;
+    private final int CAPACITY = 10;
     public void setUpScenario1(){
         hashTable = new HashTable<>(CAPACITY);
     }
