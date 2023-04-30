@@ -3,6 +3,8 @@ David Malte - A00368867
 
 Alexis Jaramillo - A00395655
 
+Juan Daniel Reina - A00394352
+
 
 ## About project 
 
