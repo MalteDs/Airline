@@ -3,7 +3,6 @@ package model;
 import structures.*;
 
 import java.io.*;
-import java.util.ArrayList;
 
 public class Airline {
     private HashTable<Integer, Passenger> passengers;
@@ -15,12 +14,10 @@ public class Airline {
     final static String path = "src/data/passengers.txt";
     final static String planePath = "src/data/flight.txt";
     int boardingOrder = 0;
-
-
     public Airline() {
     }
 
-    public void loadPassengerData() throws IOException {
+    public HashTable<Integer, Passenger> loadPassengerData() throws IOException {
         File file = new File(path);
         int i = 0;
         if (file.exists()) {
@@ -45,6 +42,7 @@ public class Airline {
                 i++;
             }
         }
+        return passengers;
     }
 
     public void loadPlaneData() throws IOException {
@@ -75,10 +73,10 @@ public class Airline {
         return passengers.toString();
     }
 
-    public void registerBoarding(int id, int i) {
+    public void registerBoarding(int id) {
         Passenger passenger = searchPassenger(id);
         if (passenger != null && !isBoarded(passenger)) {
-            System.out.println(i+" "+passenger.getName());
+
             if (passenger.isVip()) {
                 passenger.setBoardingOrder(boardingOrder);
                 vipBoardingQueue.enqueue(passenger.getId());
@@ -104,7 +102,7 @@ public class Airline {
 
     public void simulateArrive(){
         for(int i = 0; i <=  ids.length-1; i++){
-            registerBoarding(ids[i], i);
+            registerBoarding(ids[i]);
         }
     }
 
